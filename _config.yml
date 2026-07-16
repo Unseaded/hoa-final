@@ -2,8 +2,8 @@ title: Meadows of Wright Farm
 email: board@wrightfarmhoa.example.com
 description: >-
   Homeowners Association of Meadows of Wright Farm, Springfield Township, Ohio.
-baseurl: ""
-url: ""
+baseurl: "/hoa-final"
+url: "https://Unseaded.github.io"
 
 collections:
   events:
