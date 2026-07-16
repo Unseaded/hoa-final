@@ -1,0 +1,58 @@
+---
+layout: default
+title: Home
+---
+<div class="hero">
+  <h1>Meadows of Wright Farm</h1>
+  <p>{{ site.data.settings.tagline }}</p>
+</div>
+
+{% if site.data.settings.announcements %}
+<div class="announcements">
+  {{ site.data.settings.announcements | markdownify }}
+</div>
+{% endif %}
+
+<div class="card-grid">
+  <div class="card">
+    <h3>Documents</h3>
+    <p>CC&Rs, Bylaws, and Meeting Minutes.</p>
+    <a href="{{ '/documents/' | relative_url }}">View Documents →</a>
+  </div>
+  <div class="card">
+    <h3>Events</h3>
+    <p>Upcoming neighborhood gatherings and meetings.</p>
+    <a href="{{ '/events/' | relative_url }}">View Events →</a>
+  </div>
+  <div class="card">
+    <h3>Board & Committees</h3>
+    <p>Meet your HOA representatives.</p>
+    <a href="{{ '/board/' | relative_url }}">View Board →</a>
+  </div>
+  <div class="card">
+    <h3>Contact</h3>
+    <p>Reach out to the board or management.</p>
+    <a href="{{ '/contact/' | relative_url }}">Get in Touch →</a>
+  </div>
+</div>
+
+<div class="divider">{% include svg-fence.html %}</div>
+
+<h2>Upcoming Events</h2>
+<ul class="event-list">
+  {% assign current_date = 'now' | date: "%Y-%m-%d" %}
+  {% assign future_events = site.events | where_exp:"item", "item.date >= current_date" | sort: 'date' %}
+  {% for event in future_events limit:2 %}
+    <li class="event-item">
+      <h3><a href="{{ event.url | relative_url }}">{{ event.title }}</a></h3>
+      <div class="event-meta">
+        {{ event.date | date: "%B %-d, %Y" }} 
+        {% if event.time %} | {{ event.time }}{% endif %}
+        {% if event.location %} | {{ event.location }}{% endif %}
+      </div>
+      <p>{{ event.content | strip_html | truncatewords: 30 }}</p>
+    </li>
+  {% else %}
+    <p>No upcoming events scheduled.</p>
+  {% endfor %}
+</ul>

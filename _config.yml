@@ -1,0 +1,22 @@
+title: Meadows of Wright Farm
+email: board@wrightfarmhoa.example.com
+description: >-
+  Homeowners Association of Meadows of Wright Farm, Springfield Township, Ohio.
+baseurl: ""
+url: ""
+
+collections:
+  events:
+    output: true
+    sort_by: date
+  documents:
+    output: false
+  committee:
+    output: false
+
+# Exclude Decap CMS files from Jekyll processing if needed (not strictly required)
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - node_modules/

@@ -1,0 +1,31 @@
+---
+layout: page
+title: Document Library
+---
+
+<p>Access important HOA documents, meeting minutes, and forms below. Documents are organized by category and sorted by date.</p>
+
+{% assign categories = "Meeting Minutes,Bylaws & Covenants,Financial Reports,Newsletters,Forms" | split: "," %}
+
+{% for category in categories %}
+  <h3>{{ category }}</h3>
+  {% assign docs_in_cat = site.documents | where: "category", category | sort: "date" | reverse %}
+  
+  {% if docs_in_cat.size > 0 %}
+    <ul class="doc-list">
+    {% for doc in docs_in_cat %}
+      <li class="doc-item">
+        <div>
+          <strong>{{ doc.title }}</strong><br>
+          <small>{{ doc.date | date: "%B %Y" }}</small>
+        </div>
+        <div>
+          <a href="{{ doc.file | relative_url }}" target="_blank">Download</a>
+        </div>
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p><em>No documents currently available in this category.</em></p>
+  {% endif %}
+{% endfor %}
