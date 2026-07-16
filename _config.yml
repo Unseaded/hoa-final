@@ -1,0 +1,34 @@
+title: Meadows of Wright Farm
+email: contact@meadowsofwrightfarm.com
+description: >-
+  Official website for the Meadows of Wright Farm Homeowners Association, 
+  located in Springfield Township, Ohio.
+baseurl: "" # e.g. /hoa-final if hosting on a subpath without a custom domain
+url: "" # e.g. https://your-github-username.github.io
+
+# Build settings
+theme: null
+plugins:
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  events:
+    output: false
+  documents:
+    output: false
+  board:
+    output: false
+
+# Exclude from processing
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

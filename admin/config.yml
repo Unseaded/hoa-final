@@ -1,0 +1,83 @@
+backend:
+  name: github
+  repo: your-github-username/hoa-final # TODO: update this with your actual repository
+  branch: main
+  # If using Netlify for Auth, comment the line below. If using a Cloudflare Worker, uncomment and set the URL.
+  # base_url: https://your-cloudflare-worker.workers.dev
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: https://your-github-username.github.io/hoa-final
+display_url: https://your-github-username.github.io/hoa-final
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "_data/settings.yml"
+        description: "General site settings like tagline and announcements"
+        fields:
+          - {label: "Homepage Tagline", name: "tagline", widget: "string"}
+          - {label: "Announcements", name: "announcements", widget: "markdown", required: false}
+          - {label: "Footer Contact Info", name: "contact_info", widget: "markdown"}
+          - {label: "Management Company Info", name: "management_info", widget: "markdown"}
+
+  - name: "pages"
+    label: "Pages"
+    folder: "/"
+    create: false
+    extension: "md"
+    editor:
+      preview: false
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Permalink", name: "permalink", widget: "string", required: false}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+      - {label: "Body", name: "body", widget: "markdown"}
+    filter:
+      field: "layout"
+      value: "page"
+
+  - name: "events"
+    label: "Events"
+    folder: "_events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "event_date", widget: "date", format: "YYYY-MM-DD"}
+      - {label: "Time", name: "event_time", widget: "string", required: false}
+      - {label: "Location", name: "location", widget: "string"}
+      - {label: "Flyer Image", name: "image", widget: "image", required: false}
+      - {label: "Description", name: "body", widget: "markdown"}
+
+  - name: "documents"
+    label: "Documents"
+    folder: "_documents"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["Meeting Minutes", "Bylaws & Covenants", "Financial Reports", "Newsletters", "Forms"]}
+      - {label: "Date Added", name: "date", widget: "date", format: "YYYY-MM-DD"}
+      - {label: "File", name: "file_upload", widget: "file"}
+
+  - name: "board"
+    label: "Board & Committees"
+    folder: "_board"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Role", name: "role", widget: "string", required: false}
+      - {label: "Group (Board or Committee)", name: "group", widget: "select", options: ["Board of Directors", "Architectural Review", "Landscaping", "Social & Events"]}
+      - {label: "Photo", name: "photo", widget: "image", required: false}
+      - {label: "Email", name: "email", widget: "string", required: false}
+      - {label: "Sort Order", name: "order", widget: "number", value_type: "int", required: false}
+      - {label: "Short Bio", name: "body", widget: "markdown", required: false}

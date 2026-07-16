@@ -1,0 +1,35 @@
+---
+layout: page
+title: Documents
+subtitle: Association Records & Forms
+---
+
+<div class="documents-container">
+  <p>Select a category below to view related documents. All documents are sorted by date added (newest first).</p>
+
+  {% assign categories = "Meeting Minutes,Bylaws & Covenants,Financial Reports,Newsletters,Forms" | split: "," %}
+  {% assign sorted_docs = site.documents | sort: 'date' | reverse %}
+
+  {% for category in categories %}
+    <h2 style="margin-top: var(--space-lg); border-bottom: 2px solid var(--color-border); padding-bottom: var(--space-sm);">{{ category }}</h2>
+    <ul class="item-list">
+      {% assign has_docs = false %}
+      {% for doc in sorted_docs %}
+        {% if doc.category == category %}
+          {% assign has_docs = true %}
+          <li class="item-row">
+            <div class="item-info">
+              <h3><a href="{{ doc.file_upload | relative_url }}" target="_blank" rel="noopener noreferrer">{{ doc.title }}</a></h3>
+              <p class="item-meta">Added: {{ doc.date | date: "%B %-d, %Y" }}</p>
+            </div>
+            <a href="{{ doc.file_upload | relative_url }}" download class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.9rem;">Download</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+      
+      {% if has_docs == false %}
+        <p style="color: #666; font-style: italic;">No documents currently available in this category.</p>
+      {% endif %}
+    </ul>
+  {% endfor %}
+</div>
