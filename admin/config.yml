@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: your-username/hoa-final # UPDATE THIS TO YOUR REPO
+  repo: Unseaded/hoa-final # UPDATE THIS TO YOUR REPO
   branch: main # Branch to update (master or main)
 
 # Media files
