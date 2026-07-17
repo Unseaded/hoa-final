@@ -13,10 +13,11 @@ a:hover { text-decoration: underline; }
 
 .header-wrapper { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 
-.site-title { font-family: "Fraunces", serif; font-size: 1.5rem; color: #2c4c3b; display: flex; align-items: center; gap: 10px; }
+.site-title { font-family: "Fraunces", serif; font-size: 1.5rem; color: #2c4c3b; display: flex; align-items: center; gap: 12px; }
 .site-title:hover { text-decoration: none; }
+.site-title:hover .header-logo { transform: scale(1.1) rotate(-3deg); }
 
-.logo-icon { color: #8b5a2b; }
+.header-logo { height: 32px; width: auto; display: block; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
 .site-nav .nav-trigger { display: none; }
 .site-nav .menu-icon { display: none; }
@@ -30,6 +31,8 @@ a:hover { text-decoration: underline; }
   .site-nav .nav-trigger:checked ~ .trigger { display: block; }
   .site-nav .page-link { display: block; padding: 5px 20px; margin-left: 0; } }
 .hero { text-align: center; padding: 4rem 20px; background-color: rgba(44, 76, 59, 0.05); border-radius: 8px; margin: 2rem 0; }
+.hero .hero-logo { max-width: 120px; height: auto; margin-bottom: 1.5rem; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: drop-shadow(0 4px 8px rgba(44, 76, 59, 0.15)); }
+.hero .hero-logo:hover { transform: scale(1.08) rotate(-2deg); }
 .hero h1 { font-size: 2.5rem; margin-top: 0; }
 .hero p { font-size: 1.2rem; color: #666666; max-width: 600px; margin: 0 auto; }
 
@@ -65,6 +68,7 @@ form button:hover { background-color: #192c22; }
 
 .footer-col { flex: 1; min-width: 200px; margin-bottom: 20px; }
 
-.footer-horse { color: rgba(44, 76, 59, 0.2); }
+.footer-horse img { height: 48px; width: auto; display: block; opacity: 0.2; transition: opacity 0.3s ease, transform 0.3s ease; }
+.footer-horse img:hover { opacity: 0.6; transform: scale(1.05); }
 
 .text-right { text-align: right; }

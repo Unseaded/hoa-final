@@ -68,13 +68,20 @@ a {
   color: $color-primary;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   &:hover {
     text-decoration: none;
+
+    .header-logo {
+      transform: scale(1.1) rotate(-3deg);
+    }
   }
 }
-.logo-icon {
-  color: $color-accent;
+.header-logo {
+  height: 32px;
+  width: auto;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .site-nav {
@@ -129,6 +136,19 @@ a {
   background-color: rgba($color-primary, 0.05);
   border-radius: 8px;
   margin: 2rem 0;
+
+  .hero-logo {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 4px 8px rgba($color-primary, 0.15));
+
+    &:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+  }
+
   h1 {
     font-size: 2.5rem;
     margin-top: 0;
@@ -262,7 +282,18 @@ form {
   margin-bottom: 20px;
 }
 .footer-horse {
-  color: rgba($color-primary, 0.2);
+  img {
+    height: 48px;
+    width: auto;
+    display: block;
+    opacity: 0.2;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+  }
 }
 .text-right {
   text-align: right;
